@@ -11,20 +11,11 @@ insert into EmployeeTerritories values (10, 99999)
 
 update Territories set TerritoryDescription = 'Arnor' where TerritoryDescription = 'Gondor'
 
-Delete EmployeeTerritories where EmployeeID = (Select empterr.EmployeeID
-From Region r join Territories terr on r.RegionID = terr.RegionID
-	join EmployeeTerritories empterr on empterr.TerritoryID = terr.TerritoryID
-where r.RegionDescription = 'Middle Earth') 
+Delete EmployeeTerritories where EmployeeID =10
 
 
-Delete Territories where TerritoryID = (Select terr.TerritoryID
-From Region r join Territories terr on r.RegionID = terr.RegionID
-	join EmployeeTerritories empterr on empterr.TerritoryID = terr.TerritoryID
-where r.RegionDescription = 'Middle Earth') 
+Delete Territories where RegionID = 5
 
-Delete Region where RegionID = (Select r.RegionID
-From Region r join Territories terr on r.RegionID = terr.RegionID
-	join EmployeeTerritories empterr on empterr.TerritoryID = terr.TerritoryID
-where r.RegionDescription = 'Middle Earth') 
+Delete Region where RegionDescription = 'Middle Earth'
 
 commit
