@@ -1,0 +1,65 @@
+1.     What is View? What are the benefits of using views?
+In a database, a view is the result set of a stored query on the data, 
+which the database users can query just as they would in a persistent database collection object.
+It is a physical object in the database. It does not store data like table. It stores the data schema,
+so when a view is refered, it pulls data from the query it is associated with.
+
+Benefits: Views can join and simplify multiple tables into a single virtual table.
+	  Views take very little space to store; the database contains only the definition of a view,
+	  	not a copy of all the data that it presents.
+	  Views can simplify the how users work with data, making code reusable.
+	  Views can represent a subset of the data contained in a table. 
+		Consequently, a view can limit the degree of exposure of the underlying tables to the outer world: 
+		a given user may have permission to query the view, while denied access to the rest of the base table.
+	  Views can combine similar, structured data from different servers.
+
+2.     Can data be modified through views?
+Yes
+
+3.     What is stored procedure and what are the benefits of using it?
+SP groups one or more Transact-SQL statements into a logical unit, stored as an object in a SQL server database.
+When it is executed the first time, an optimal query access plan is created and stored in the plan memory cache to be later used.
+The use of SP allows plan to be reused, so the performance would be faster and more reliable. 
+Benefits:
+	Increase security by limiting direct access.
+	Faster using cache.
+	It help centralize Transact-SQL code in the data tier. It is hard to modify webs and apps with embedded ad hoc sql in a production environment.
+		With centralized code, we do not have to recommplie the page or program executable.
+	It reduces network traffics for larger ad hoc queries. 
+	It encourages code reusablities.
+
+4.     What is the difference between view and stored procedure?
+View is a data schema. 
+SP is a collection of pre-executed sql statements, 
+	where you can send in parameters as input and retrieve outputs.
+	It can contain views.
+
+5.     What is the difference between stored procedure and functions?
+SP can return zero, one, or multiple values. Function returns one mandatory value.
+We can use transactions in SP, but not in function.
+SP can have input and output parameters. Function only have input parameters.
+We can call functions from SP, but not the other way around.
+We cannot use SP in a select statement, but we can use functions.
+SP allows select,insert,update,delete statement in it. Function only allows select statement in it.
+
+6.     Can stored procedure return multiple result sets?
+Yes.
+
+7.     Can stored procedure be executed as part of SELECT Statement? Why?
+No, because prosedures are not allowed in sql statements.
+
+8.     What is Trigger? What types of Triggers are there?
+It is a special type of SP that gets fired when user issues a create, alter, drop or an insert, update, delete on a table.
+DDL, DML.
+
+9.     What are the scenarios to use Triggers?
+Enforce data integrity beyond simple referential integrity.
+Implement business rules.
+Maintain audit record of changes.
+Accomplish cascading updates and deletes.
+
+10.  What is the difference between Trigger and Stored Procedure?
+Trigger is run automatically on events. SP is run manually.
+SPs can be called within a trigger.
+We can call SP from a front end file.
+Trigger cant take input parameters.
