@@ -51,6 +51,20 @@ after insert
 as 
 begin
 declare @numTroy int
+	select @numTroy = COUNT(e.EmployeeID) 
+	From Employees e 
+		join EmployeeTerritories empterr ON e.EmployeeID = empterr.EmployeeID
+		join Territories terr ON terr.TerritoryID = empterr.TerritoryID
+	where terr.TerritoryDescription = 'Troy'
+	group by terr.TerritoryDescription
+if @numTroy > 100
+begin
+update Employees set City = 'Troy' where EmployeeID IN (Select e.EmployeeID
+			From Employees e join EmployeeTerritories empterr ON e.EmployeeID = empterr.EmployeeID
+			join Territories terr ON terr.TerritoryID = empterr.TerritoryID
+			where terr.TerritoryDescription = 'Stevens Point'
+			)
+end
 
 
 
